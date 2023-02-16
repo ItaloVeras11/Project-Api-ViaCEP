@@ -3,12 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Endereco\SalvarRequest;
+use App\Models\Enderecos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class EnderecoController extends Controller
 {
     public function index()
+    {
+        $enderecos = Enderecos::all();
+        return view('listagem')->with([
+            'enderecos' => $enderecos
+        ]);
+    }
+
+    public function adicionar()
     {
         return view('busca');
     }
@@ -30,6 +39,15 @@ class EnderecoController extends Controller
 
     public function salvar(SalvarRequest $request)
     {
-        dd($request->all());
+        Enderecos::create([
+            'cep' => $request->input('cep'),
+            'logradouro' => $request->input('logradouro'),
+            'numero' => $request->input('numero'),
+            'bairro' => $request->input('bairro'),
+            'cidade' => $request->input('cidade'),
+            'estado' => $request->input('estado'),
+        ]);
+
+        return redirect('/');
     }
 }
