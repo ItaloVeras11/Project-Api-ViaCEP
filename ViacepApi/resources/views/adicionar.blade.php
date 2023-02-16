@@ -19,17 +19,16 @@
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{$error}}</li>
-                        
+                        <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
-            
+
         @endif
 
 
 
-        <form action="{{ route('buscar') }}" method="POST">
+        <form action="{{ route('salvar') }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label>CEP</label>
@@ -53,7 +52,7 @@
             </div>
             <div class="mb-3">
                 <label>Estado</label>
-                <input type="text" class="form-control" name="Estado" value="{{ $estado }}">
+                <input type="text" class="form-control" name="estado" value="{{ $estado }}">
             </div>
 
             <button type="submit" class="btn btn-primary">Salvar</button>

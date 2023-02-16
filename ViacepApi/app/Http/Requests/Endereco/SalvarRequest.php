@@ -23,8 +23,5 @@ class SalvarRequest extends FormRequest
         ];
     }
 
-    public function salvar(SalvarRequest $request)
-    {
-        dd($request->all());
-    }
+
 }
