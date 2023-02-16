@@ -14,30 +14,46 @@
         <h1 class="mb-5">
             Adicionar CEP
         </h1>
-        <form action="{{ route('buscar') }}" method="GET">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        
+                    @endforeach
+                </ul>
+            </div>
+            
+        @endif
+
+
+
+        <form action="{{ route('buscar') }}" method="POST">
+            @csrf
             <div class="mb-3">
                 <label>CEP</label>
-                <input type="text" class="form-control" name="cep" value="{{$cep}}">
+                <input type="text" class="form-control" name="cep" value="{{ $cep }}">
             </div>
             <div class="mb-3">
                 <label>Logradouro</label>
-                <input type="text" class="form-control" name="logradouro" value="{{$logradouro}}">
+                <input type="text" class="form-control" name="logradouro" value="{{ $logradouro }}">
             </div>
             <div class="mb-3">
                 <label>Numero</label>
-                <input type="text" class="form-control" name="numero" >
+                <input type="text" class="form-control" name="numero">
             </div>
             <div class="mb-3">
                 <label>Bairro</label>
-                <input type="text" class="form-control" name="bairro" value="{{$bairro}}">
+                <input type="text" class="form-control" name="bairro" value="{{ $bairro }}">
             </div>
             <div class="mb-3">
                 <label>Cidade</label>
-                <input type="text" class="form-control" name="cidade" value="{{$cidade}}">
+                <input type="text" class="form-control" name="cidade" value="{{ $cidade }}">
             </div>
             <div class="mb-3">
                 <label>Estado</label>
-                <input type="text" class="form-control" name="Estado" value="{{$estado}}">
+                <input type="text" class="form-control" name="Estado" value="{{ $estado }}">
             </div>
 
             <button type="submit" class="btn btn-primary">Salvar</button>
